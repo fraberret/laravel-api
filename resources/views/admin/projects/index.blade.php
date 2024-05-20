@@ -33,8 +33,9 @@
                             <td>
                                 <div class="d-flex align-items-center">
                                     <a class="btn btn-primary" href="{{ route('admin.projects.show', $project) }}">Show</a>
+                                    <a class="btn btn-primary" href="{{ route('admin.projects.edit', $project) }}">Edit</a>
                                     <!-- Modal trigger button -->
-                                    <button type="button" class="btn btn-danger btn-lg" data-bs-toggle="modal"
+                                    <button type="button" class="btn btn-danger btn-m" data-bs-toggle="modal"
                                         data-bs-target="#modalId">
                                         Delete
                                     </button>
