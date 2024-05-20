@@ -16,7 +16,7 @@ class ProjectController extends Controller
     public function index()
     {
         /* dd(Project::all()); */
-        return view('admin.projects.index', ['projects' => Project::orderBy('id')->paginate(8)]);
+        return view('admin.projects.index', ['projects' => Project::orderby('id')->paginate(8)]);
     }
 
     /**
@@ -76,6 +76,7 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
+        $project->delete();
+        return to_route('admin.projects.index');
     }
 }

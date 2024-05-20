@@ -28,7 +28,9 @@ Route::middleware(['auth', 'verified'])
         // 👇
         // Put here all routes that needs to be protected by our authenticatio system
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
-        Route::resource('projects', ProjectController::class);
+        Route::resource('projects', ProjectController::class)->parameters([
+            'posts' => 'post:slug'
+        ]);
     });
 
 
