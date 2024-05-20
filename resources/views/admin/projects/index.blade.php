@@ -6,22 +6,28 @@
             <table class="table table-light">
                 <thead>
                     <tr>
-                        <th scope="col">Column 1</th>
-                        <th scope="col">Column 2</th>
-                        <th scope="col">Column 3</th>
+                        <th scope="col">Id</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Description</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="">
-                        <td scope="row">R1C1</td>
-                        <td>R1C2</td>
-                        <td>R1C3</td>
-                    </tr>
-                    <tr class="">
-                        <td scope="row">Item</td>
-                        <td>Item</td>
-                        <td>Item</td>
-                    </tr>
+                    @forelse ($projects as $project)
+                        <tr class="">
+                            <td scope="row">{{ $project->id }}</td>
+                            <td>{{ $project->title }}</td>
+                            <td><img width="100" src="{{ $project->cover_image }}" alt=""></td>
+                            <td>{{ $project->description }}</td>
+                        </tr>
+                    @empty
+                        <tr class="">
+                            <td scope="row" colspan="3">Nothing found</td>
+
+                        </tr>
+                    @endforelse
+
+
                 </tbody>
             </table>
         </div>
