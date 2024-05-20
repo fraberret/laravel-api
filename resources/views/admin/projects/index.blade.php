@@ -1,7 +1,12 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="container">
+    <div class="container py-4">
+        <div class="d-flex justify-content-between align-items-center py-4">
+            <h1>Projects</h1>
+            <a class="btn btn-primary" href="{{ route('admin.projects.create') }}">Add new Projects</a>
+        </div>
+
         <div class="table-responsive">
             <table class="table table-light">
                 <thead>
@@ -11,6 +16,7 @@
                         <th scope="col">Slug</th>
                         <th scope="col">Image</th>
                         <th scope="col">Description</th>
+                        <th scope="col">Project Link</th>
                         <th scope="col">Actions</th>
 
                     </tr>
@@ -23,6 +29,7 @@
                             <td>{{ $project->slug }}</td>
                             <td><img width="100" src="{{ $project->cover_image }}" alt=""></td>
                             <td>{{ $project->description }}</td>
+                            <td>{{ $project->project_link }}</td>
                             <td><a href="{{ route('admin.projects.show', $project) }}">Show</a></td>
                         </tr>
                     @empty
