@@ -6,6 +6,7 @@ use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Project;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class ProjectController extends Controller
@@ -40,7 +41,19 @@ class ProjectController extends Controller
 
         $val_data['slug'] = $slug;
 
+        if ($request->has('cover_image')) {
+            # code...
+            $image_path = Storage::put('uploads', $val_data['cover_image']);
+            /* dd($image_path); */
+
+            $val_data['cover_image'] = $image_path;
+        }
+
         Project::create($val_data);
+
+
+
+
 
 
 
@@ -69,6 +82,24 @@ class ProjectController extends Controller
     public function update(UpdateProjectRequest $request, Project $project)
     {
         $val_data = $request->validated();
+
+        $slug = Str::slug($request->title, '-');
+        $val_data['slug'] = $slug;
+
+
+        if ($request->has('cover_image')) {
+
+            if ($project->cover_image) {
+                Storage::delete($project->cover_image);
+            }
+
+            $image_path = Storage::put('uploads', $val_data['cover_image']);
+            /* dd($image_path); */
+
+            $val_data['cover_image'] = $image_path;
+        }
+
+
         $project->update($val_data);
         return to_route('admin.projects.index');
     }
@@ -78,6 +109,9 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+        if ($project->cover_image) {
+            Storage::delete($project->cover_image);
+        }
         $project->delete();
         return to_route('admin.projects.index');
     }
