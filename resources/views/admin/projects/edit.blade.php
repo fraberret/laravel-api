@@ -34,16 +34,17 @@
 
             <div class="mb-3">
                 <label for="type_id" class="form-label">Type</label>
-                <select class="form-select form-select-lg" name="type_id" id="type_id">
-                    <option selected disabled>Select one</option>
-
+                <select class="form-select" name="type_id" id="type_id">
+                    <option selected disabled>Select a type</option>
                     @foreach ($types as $type)
-                        <option value="{{ $type->id }}" {{ $type->id == old('type_id') ? 'selected' : '' }}>
-                            {{ $type->name }}</option>
+                        <option value="{{ $type->id }}"
+                            {{ $type->id == old('type_id', $project->type_id) ? 'selected' : '' }}>{{ $type->name }}
+                        </option>
                     @endforeach
 
                 </select>
             </div>
+
 
             <div class="mb-3">
                 <label for="project_link" class="form-label">Project's link</label>
