@@ -28,7 +28,7 @@
                             <td scope="row">{{ $project->id }}</td>
 
                             <td>{{ $project->title }}</td>
-                            <td>{{ $project->type }}</td>
+                            <td>{{ $project->type ? $project->type->name : 'Uncategorized' }}</td>
                             <td>{{ $project->slug }}</td>
                             <td>
                                 @if (Str::startsWith($project->cover_image, 'https://'))
