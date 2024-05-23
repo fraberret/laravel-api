@@ -12,6 +12,7 @@
                 <thead>
                     <tr>
                         <th scope="col">Id</th>
+                        <th scope="col">Type</th>
                         <th scope="col">Title</th>
                         <th scope="col">Slug</th>
                         <th scope="col">Image</th>
@@ -25,6 +26,7 @@
                     @forelse ($projects as $project)
                         <tr class="">
                             <td scope="row">{{ $project->id }}</td>
+
                             <td>{{ $project->title }}</td>
                             <td>{{ $project->slug }}</td>
                             <td>
