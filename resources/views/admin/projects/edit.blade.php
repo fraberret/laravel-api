@@ -33,6 +33,19 @@
             </div>
 
             <div class="mb-3">
+                <label for="type_id" class="form-label">Type</label>
+                <select class="form-select form-select-lg" name="type_id" id="type_id">
+                    <option selected disabled>Select one</option>
+
+                    @foreach ($types as $type)
+                        <option value="{{ $type->id }}" {{ $type->id == old('type_id') ? 'selected' : '' }}>
+                            {{ $type->name }}</option>
+                    @endforeach
+
+                </select>
+            </div>
+
+            <div class="mb-3">
                 <label for="project_link" class="form-label">Project's link</label>
                 <input type="project_link" class="form-control @error('project_link') is-invalid @enderror"
                     name="project_link" id="project_link" aria-describedby="helpId" placeholder="Https://"
