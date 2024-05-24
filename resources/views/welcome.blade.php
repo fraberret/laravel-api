@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <div class="jumbotron my-4">
+    <div class="jumbotron my-4" id="chiSono">
         <div class="container">
             <div class="row">
                 <div class="col-4">
@@ -21,6 +21,27 @@
                     </p>
 
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="skills">
+
+    </div>
+
+    <div class="projects" id="progetti">
+        <div class="container">
+            <h2 class="my-4">I miei Progetti</h2>
+            <div class="row g-4">
+                @foreach ($projects as $project)
+                    <div class="col-4">
+                        <div class="card border-0">
+                            <img src="{{ $project->cover_image }}" alt="">
+                            <h3>{{ $project->title }}</h3>
+                            <a class="" href="{{ $project->project_link }}"><i class="fa-brands fa-github"></i></a>
+                        </div>
+                    </div>
+                @endforeach
             </div>
         </div>
     </div>
