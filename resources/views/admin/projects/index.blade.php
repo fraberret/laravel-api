@@ -6,12 +6,8 @@
             <h1>Projects</h1>
             <a class="btn btn-primary" href="{{ route('admin.projects.create') }}">Add new Projects</a>
         </div>
-        @if (session('message'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                {{ session('message') }}
-            </div>
-        @endif
+
+        @include('partials.session-messages')
 
         <div class="table-responsive">
             <table class="table table-light">

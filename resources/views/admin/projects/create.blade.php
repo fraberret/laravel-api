@@ -3,7 +3,7 @@
 @section('content')
     <div class="container py-4">
 
-        @include('partials.session-messages')
+        @include('partials.validation-messages')
 
         <form action="{{ route('admin.projects.store') }}" method="post" enctype="multipart/form-data">
             @csrf
