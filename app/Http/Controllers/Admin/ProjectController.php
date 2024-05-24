@@ -104,7 +104,7 @@ class ProjectController extends Controller
 
 
         $project->update($val_data);
-        return to_route('admin.projects.index');
+        return to_route('admin.projects.index')->with('message', "Project $project->title UPDATED successfully");
     }
 
     /**
@@ -116,6 +116,6 @@ class ProjectController extends Controller
             Storage::delete($project->cover_image);
         }
         $project->delete();
-        return to_route('admin.projects.index');
+        return to_route('admin.projects.index')->with('message', "Project $project->title DELETED successfully");;
     }
 }

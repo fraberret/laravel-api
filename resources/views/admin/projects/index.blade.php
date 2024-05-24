@@ -6,6 +6,12 @@
             <h1>Projects</h1>
             <a class="btn btn-primary" href="{{ route('admin.projects.create') }}">Add new Projects</a>
         </div>
+        @if (session('message'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                {{ session('message') }}
+            </div>
+        @endif
 
         <div class="table-responsive">
             <table class="table table-light">
@@ -42,13 +48,15 @@
                             <td>{{ $project->description }}</td>
                             <td>{{ $project->project_link }}</td>
                             <td>
-                                <div class="d-flex align-items-center">
-                                    <a class="btn btn-primary" href="{{ route('admin.projects.show', $project) }}">Show</a>
-                                    <a class="btn btn-primary" href="{{ route('admin.projects.edit', $project) }}">Edit</a>
+                                <div class="d-flex align-items-center gap-1">
+                                    <a class="btn btn-primary" href="{{ route('admin.projects.show', $project) }}"><i
+                                            class="fa fa-eye" aria-hidden="true"></i></a>
+                                    <a class="btn btn-primary" href="{{ route('admin.projects.edit', $project) }}"><i
+                                            class="fa fa-pencil" aria-hidden="true"></i></a>
                                     <!-- Modal trigger button -->
                                     <button type="button" class="btn btn-danger btn-m" data-bs-toggle="modal"
                                         data-bs-target="#modal-{{ $project->id }}">
-                                        Delete
+                                        <i class="fa fa-trash" aria-hidden="true"></i>
                                     </button>
                                 </div>
 
