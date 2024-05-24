@@ -30,7 +30,7 @@
     </div>
 
     <div class="projects" id="progetti">
-        <div class="container">
+        <div class="container my-4">
             <h2 class="my-4">I miei Progetti</h2>
             <div class="row g-4">
                 @foreach ($projects as $project)
