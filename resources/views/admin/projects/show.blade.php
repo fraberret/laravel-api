@@ -10,6 +10,7 @@
                 <h2>{{ $project->title }}</h2>
                 <p>{{ $project->description }}</p>
                 <p><strong>Type: </strong>{{ $project->type ? $project->type->name : 'Uncategorized' }}</p>
+
             </div>
         </div>
         <a class="btn btn-primary" href="{{ route('admin.projects.index') }}">Previous</a>
