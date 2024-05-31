@@ -50,15 +50,31 @@
 
 
                 @foreach ($technologies as $technology)
-                    <div class="form-check">
+                    @if ($errors->any())
+                        <div class="form-check">
 
-                        <input name="technologies[]" class="form-check-input " type="checkbox" value="{{ $technology->id }}"
-                            id="technology-{{ $technology->id }}"
-                            {{ in_array($technology->id, old('technologies', [])) ? 'checked' : '' }} />
-                        <label class="form-check-label" for="technology-{{ $technology->id }}">{{ $technology->name }}
-                        </label>
+                            <input name="technologies[]" class="form-check-input " type="checkbox"
+                                value="{{ $technology->id }}" id="technology-{{ $technology->id }}"
+                                {{ in_array($technology->id, old('technologies', [])) ? 'checked' : '' }} />
+                            <label class="form-check-label" for="technology-{{ $technology->id }}">{{ $technology->name }}
+                            </label>
 
-                    </div>
+                        </div>
+                    @else
+                        <div class="form-check">
+
+
+
+                            <input name="technologies[]" class="form-check-input " type="checkbox"
+                                value="{{ $technology->id }}" id="technology-{{ $technology->id }}"
+                                {{ $project->technologies->contains($technology) ? 'checked' : '' }} />
+                            <label class="form-check-label" for="technology-{{ $technology->id }}">{{ $technology->name }}
+                            </label>
+
+
+
+                        </div>
+                    @endif
                 @endforeach
 
 
