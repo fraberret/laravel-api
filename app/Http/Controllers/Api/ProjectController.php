@@ -10,10 +10,26 @@ class ProjectController extends Controller
 {
     public function index()
     {
-        $posts = Project::with('type', 'technologies')->orderByDesc('id')->paginate(12);
+        $projects = Project::with('type', 'technologies')->orderByDesc('id')->paginate(12);
         return response()->json([
             'success' => true,
-            'projects' => $posts
+            'projects' => $projects
         ]);
+    }
+
+    public function show($id)
+    {
+        $project = Project::with('technologies', 'type')->where('id', $id)->first();
+        if ($project) {
+            return response()->json([
+                'success' => true,
+                'response' => $project
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'response' => 'Error 404'
+            ]);
+        }
     }
 }
