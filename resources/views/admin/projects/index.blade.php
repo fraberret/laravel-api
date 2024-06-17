@@ -14,8 +14,9 @@
                 <thead>
                     <tr>
                         <th scope="col">Id</th>
-                        <th scope="col">Type</th>
                         <th scope="col">Title</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Technologies</th>
                         <th scope="col">Slug</th>
                         <th scope="col">Image</th>
                         <th scope="col">Description</th>
@@ -31,6 +32,7 @@
 
                             <td>{{ $project->title }}</td>
                             <td>{{ $project->type ? $project->type->name : 'Uncategorized' }}</td>
+                            <td>{{ $project->technology ? $project->technology->name : 'Uncategorized' }}</td>
                             <td>{{ $project->slug }}</td>
                             <td>
                                 @if (Str::startsWith($project->cover_image, 'https://'))

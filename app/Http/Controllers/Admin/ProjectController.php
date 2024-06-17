@@ -104,6 +104,7 @@ class ProjectController extends Controller
         $val_data['slug'] = $slug;
 
 
+
         if ($request->has('cover_image')) {
 
             if ($project->cover_image) {

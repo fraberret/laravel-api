@@ -3,7 +3,10 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TechnologyController;
+use App\Models\Lead;
 use App\Models\Project;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,7 +36,18 @@ Route::middleware(['auth', 'verified'])
         Route::resource('projects', ProjectController::class)->parameters([
             'projects' => 'project:slug'
         ]);
+
+        Route::resource('technologies', TechnologyController::class)->parameters([
+            'technologies' => 'technology:slug'
+        ]);
     });
+
+
+Route::get('/mailable', function () {
+    $lead = Lead::find(1);
+
+    return new \App\Mail\NewLeadMessageMd($lead);
+});
 
 
 
